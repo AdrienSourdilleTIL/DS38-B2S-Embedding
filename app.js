@@ -7,6 +7,7 @@ let dashboard;
 let listSheets;
 
 const oregonWashingtonButton = document.getElementById("oregon_and_washington");
+const TexasButton = document.getElementById("Texas");
 const clearFilterButton = document.getElementById("clear_filter");
 const undoButton = document.getElementById("undo");
 
@@ -44,6 +45,14 @@ function oregonWashFunction() {
     salesBySegment.applyFilterAsync("State", ["Washington", "Oregon"], "replace")
 }
 
+function TexasFunction() {
+    console.log(TexasButton.value)
+    saleMap.applyFilterAsync("State", ["Texas"], "replace")
+    totalSales.applyFilterAsync("State", ["Texas"], "replace")
+    salesByProduct.applyFilterAsync("State", ["Texas"], "replace")
+    salesBySegment.applyFilterAsync("State", ["Texas"], "replace")
+}
+
 function clearStateFilter() {
     console.log(clearFilterButton.value)
     saleMap.clearFilterAsync("State")
@@ -59,5 +68,6 @@ function unDo() {
 
 viz.addEventListener("firstinteractive", logWorkbookInformation);
 oregonWashingtonButton.addEventListener("click", oregonWashFunction);
+TexasButton.addEventListener("click", TexasFunction);
 clearFilterButton.addEventListener("click", clearStateFilter);
 undoButton.addEventListener("click", unDo);
